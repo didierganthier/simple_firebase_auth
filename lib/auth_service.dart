@@ -26,4 +26,17 @@ class AuthService with ChangeNotifier {
        String lastName,
        String email,
        String password}) async {}
+
+  //log in the user if password matches
+  Future loginUser({String email, String password}){
+    if(password == 'password123'){
+      this.currentUser = {'email': email};
+      notifyListeners();
+      return Future.value(currentUser);
+    }
+    else {
+      this.currentUser = null;
+      return Future.value(null);
+    }
+  }
 }
