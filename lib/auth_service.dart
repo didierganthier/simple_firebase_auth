@@ -6,4 +6,8 @@ class AuthService with ChangeNotifier {
   AuthService(){
     print("new AuthService");
   }
+
+  Future getUser(){
+    return Future.value(currentUser);
+  }
 }
