@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_firebase_auth/auth_service.dart';
 import 'package:simple_firebase_auth/home_page.dart';
+import 'package:simple_firebase_auth/loading_circle.dart';
 import 'package:simple_firebase_auth/login_page.dart';
 
 void main() => runApp(
@@ -29,10 +30,10 @@ class MyApp extends StatelessWidget {
               print("error");
               return Text(snapshot.error.toString());
             }
-            return snapshot.hasData? HomePage() : LoginPage();
+            return snapshot.hasData? HomePage(currentUser: snapshot.data) : LoginPage();
           } else {
             return Center(
-              child: CircularProgressIndicator(),
+              child: LoadingCircle(),
             );
           }
         },
