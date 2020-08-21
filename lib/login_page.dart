@@ -17,32 +17,35 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            SizedBox(height: 20.0),
-            Text(
-              'Login Information',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20.0),
-            TextFormField(
-              onSaved: (value) => _email = value,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: 'Email Adress'),
-            ),
-            TextFormField(
-              onSaved: (value) => _password = value,
-              obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
-            ),
-            SizedBox(height: 20.0),
-            RaisedButton(
-              onPressed: (){
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              SizedBox(height: 20.0),
+              Text(
+                'Login Information',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: 20.0),
+              TextFormField(
+                onSaved: (value) => _email = value,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(labelText: 'Email Adress'),
+              ),
+              TextFormField(
+                onSaved: (value) => _password = value,
+                obscureText: true,
+                decoration: InputDecoration(labelText: 'Password'),
+              ),
+              SizedBox(height: 20.0),
+              RaisedButton(
+                onPressed: (){
 
-              },
-              child: Text("LOGIN"),
-            )
-          ],
+                },
+                child: Text("LOGIN"),
+              )
+            ],
+          ),
         ),
       ),
     );
