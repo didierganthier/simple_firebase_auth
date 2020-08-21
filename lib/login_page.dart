@@ -63,3 +63,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+Future _buildShowErrorDialog(BuildContext context, _message){
+  return showDialog(
+    builder: (context){
+      return AlertDialog(
+        title: Text('Error Message'),
+        content: Text(_message),
+        actions: [
+          FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('Cancel'))
+        ],
+      );
+    },
+    context: context,
+  );
+}
