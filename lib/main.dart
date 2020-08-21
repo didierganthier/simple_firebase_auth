@@ -25,6 +25,10 @@ class MyApp extends StatelessWidget {
         future: Provider.of<AuthService>(context).getUser(),
         builder: (context, AsyncSnapshot snapshot){
           if(snapshot.connectionState == ConnectionState.done){
+            if(snapshot.error != null){
+              print("error");
+              return Text(snapshot.error.toString());
+            }
             return snapshot.hasData? HomePage() : LoginPage();
           } else {
             return Center(
