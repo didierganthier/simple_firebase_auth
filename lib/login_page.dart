@@ -16,10 +16,12 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: [
+            SizedBox(height: 20.0),
             Text(
               'Login Information',
               style: TextStyle(fontSize: 20),
             ),
+            SizedBox(height: 20.0),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: 'Email Adress'),
@@ -28,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
               decoration: InputDecoration(labelText: 'Password'),
             ),
+            SizedBox(height: 20.0),
             RaisedButton(
               onPressed: (){
 
