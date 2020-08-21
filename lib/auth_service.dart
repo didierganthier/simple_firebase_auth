@@ -4,22 +4,17 @@ import 'package:flutter/material.dart';
 //{}
 
 class AuthService with ChangeNotifier {
-  final _auth = FirebaseAuth.instance;
-  var currentUser;
-  
-  AuthService(){
-    print("new AuthService");
-  }
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future getUser(){
-    return Future.value(currentUser);
+  Future getUser() async{
+    return _auth.currentUser;
   }
 
   //wrapping the firebase calls
-  Future logout(){
-    this.currentUser = null;
+  Future logout() async{
+    var result = FirebaseAuth.instance.signOut();
     notifyListeners();
-    return Future.value(currentUser);
+    return result;
   }
 
   //wrapping the firebase calls
@@ -30,15 +25,14 @@ class AuthService with ChangeNotifier {
        String password}) async {}
 
   //log in the user if password matches
-  Future loginUser({String email, String password}){
-    if(password == 'password123'){
-      this.currentUser = {'email': email};
+  Future loginUser({String email, String password}) async{
+    try{
+      var result = FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       notifyListeners();
-      return Future.value(currentUser);
+      return result;
     }
-    else {
-      this.currentUser = null;
-      return Future.value(null);
+    catch(e){
+      throw new FirebaseAuthException(message: e.message, code: e.code);
     }
   }
 }
