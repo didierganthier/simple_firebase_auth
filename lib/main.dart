@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_firebase_auth/auth_service.dart';
 import 'package:simple_firebase_auth/home_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+  ChangeNotifierProvider<AuthService>(
+    child: MyApp(),
+    create: (BuildContext context){
+      return AuthService();
+    },
+  ),
+);
 
 class MyApp extends StatelessWidget {
   @override
