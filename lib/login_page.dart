@@ -1,4 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_firebase_auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -39,12 +43,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                onPressed: (){
+                onPressed: () async{
                   final form = _formKey.currentState;
                   form.save();
-
                   if(form.validate()){
-                    print('$_email $_password');
+                    var result = await Provider.of<AuthService>(context).loginUser(email: _email, password: _password);
+                    if(result == null){
+
+                    }
                   }
                 },
                 child: Text("LOGIN"),
@@ -56,3 +62,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
