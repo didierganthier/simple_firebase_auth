@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   final form = _formKey.currentState;
                   form.save();
                   if(form.validate()){
-                    var result = await Provider.of<AuthService>(context).loginUser(email: _email, password: _password);
+                    var result = await Provider.of(context).loginUser(email: _email, password: _password);
                     if(result == null){
                       return _buildShowErrorDialog(context, 'Error logging in with those credentials');
                     }
