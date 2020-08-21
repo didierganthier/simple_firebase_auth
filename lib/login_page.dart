@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   if(form.validate()){
                     var result = await Provider.of<AuthService>(context).loginUser(email: _email, password: _password);
                     if(result == null){
-
+                      return _buildShowErrorDialog(context, 'Error logging in with those credentials');
                     }
                   }
                 },
