@@ -26,10 +26,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20.0),
             TextFormField(
+              onSaved: (value) => _email = value,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(labelText: 'Email Adress'),
             ),
             TextFormField(
+              onSaved: (value) => _password = value,
               obscureText: true,
               decoration: InputDecoration(labelText: 'Password'),
             ),
