@@ -40,7 +40,12 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20.0),
               RaisedButton(
                 onPressed: (){
+                  final form = _formKey.currentState;
+                  form.save();
 
+                  if(form.validate()){
+                    print('$_email $_password');
+                  }
                 },
                 child: Text("LOGIN"),
               )
