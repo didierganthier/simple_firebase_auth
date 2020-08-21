@@ -12,8 +12,9 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Login Page Flutter Firebase'),
       ),
-      body: Center(
-        child: Text('Login Page Flutter Firebase content'),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(),
       ),
     );
   }
